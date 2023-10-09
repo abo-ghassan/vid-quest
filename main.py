@@ -2,7 +2,8 @@
 
 from youtube_search import YoutubeSearch
 import mpv
-import requests.exceptions
+from requests.exceptions import ConnectionError
+from sys import exit
 from colorama import Fore,Style
 
 def main():
@@ -15,8 +16,9 @@ def main():
         search_query = input('Enter your search query: ')
         print(f'{Fore.YELLOW}Searching for videos...{Style.RESET_ALL}\n')
         try:
-            results = YoutubeSearch(search_query, max_results=7).to_dict()
-        except requests.exceptions.ConnectionError:
+            results = YoutubeSearch(search_query, max_results=7).to_dict() # I like number 7
+        # except requests.exceptions.ConnectionError:
+        except ConnectionError:
             print(f'{Fore.LIGHTRED_EX}Check your internet connection and try again.{Style.RESET_ALL}')
             exit()
 
