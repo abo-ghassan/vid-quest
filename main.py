@@ -11,6 +11,7 @@ def main():
         # Create mpv player instance
         player = mpv.MPV(ytdl=True, input_default_bindings=True, input_vo_keyboard=True, osc=True)
         player['ytdl-format'] = 'bestvideo[height<=?240]+bestaudio/best'
+        player['fullscreen'] = True
 
         # Prompt user for search query and search for videos on YouTube
         search_query = input('Enter your search query: ')
